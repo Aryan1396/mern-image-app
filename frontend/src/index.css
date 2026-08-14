@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-cream text-ink font-sans;
+}
+
+::selection {
+  @apply bg-accentSoft/40;
+}
