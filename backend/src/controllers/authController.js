@@ -1,8 +1,8 @@
 const User = require("../models/User");
 const generateTokenAndSetCookie = require("../utils/generateToken");
 
-// @desc  Register a new user
-// @route POST /api/auth/register
+//  Register a new user
+//  POST /api/auth/register
 const register = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -30,8 +30,8 @@ const register = async (req, res) => {
   }
 };
 
-// @desc  Login existing user
-// @route POST /api/auth/login
+//   Login existing user
+//  POST /api/auth/login
 const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -60,8 +60,8 @@ const login = async (req, res) => {
   }
 };
 
-// @desc  Logout user (clear cookie)
-// @route POST /api/auth/logout
+//   Logout user (clear cookie)
+//  POST /api/auth/logout
 const logout = (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
@@ -71,8 +71,8 @@ const logout = (req, res) => {
   res.status(200).json({ message: "Logged out successfully" });
 };
 
-// @desc  Get currently logged-in user
-// @route GET /api/auth/me
+//   Get currently logged-in user
+//   GET /api/auth/me
 const getMe = async (req, res) => {
   res.status(200).json({
     user: { id: req.user._id, name: req.user.name, email: req.user.email },

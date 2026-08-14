@@ -1,8 +1,8 @@
 const imagekit = require("../config/imagekit");
 const Post = require("../models/Post");
 
-// @desc  Create a post (image + title + category) owned by the logged-in user
-// @route POST /api/posts
+//   Create a post
+//   POST /api/posts
 const createPost = async (req, res) => {
   try {
     const { title, category } = req.body;
@@ -35,8 +35,8 @@ const createPost = async (req, res) => {
   }
 };
 
-// @desc  Get only the logged-in user's posts (never anyone else's)
-// @route GET /api/posts
+//   Get only the logged-in user's posts (never anyone else's)
+//   GET /api/posts
 const getMyPosts = async (req, res) => {
   try {
     const posts = await Post.find({ user: req.user._id }).sort({ createdAt: -1 });
@@ -46,20 +46,19 @@ const getMyPosts = async (req, res) => {
   }
 };
 
-// @desc  Delete a post — only if it belongs to the logged-in user
-// @route DELETE /api/posts/:id
+//   Delete a post 
+//   DELETE /api/posts/:id
 const deletePost = async (req, res) => {
   try {
     const post = await Post.findOne({ _id: req.params.id, user: req.user._id });
 
     if (!post) {
-      // Same message whether it doesn't exist or belongs to someone else —
-      // never reveal that another user's post exists.
+    
       return res.status(404).json({ message: "Post not found" });
     }
 
     if (post.imageFileId) {
-      // Best-effort cloud cleanup — don't fail the request if ImageKit errors
+      //  if ImageKit errors
       try {
         await imagekit.deleteFile(post.imageFileId);
       } catch (err) {

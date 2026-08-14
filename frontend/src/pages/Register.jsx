@@ -38,7 +38,7 @@ export default function Register() {
           name="name"
           value={form.name}
           onChange={handleChange}
-          placeholder="Jane Doe"
+          placeholder="Full Name"
           required
         />
         <TextInput

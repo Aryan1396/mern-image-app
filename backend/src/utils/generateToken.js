@@ -1,9 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-/**
- * Signs a JWT for a given user id and sets it as an httpOnly cookie.
- * httpOnly cookies can't be read by client-side JS, which mitigates XSS token theft.
- */
+// Generates a JWT token
 const generateTokenAndSetCookie = (res, userId) => {
   const token = jwt.sign({ id: userId }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN || "7d",

@@ -14,7 +14,7 @@ const postSchema = new mongoose.Schema(
       trim: true,
       maxlength: 100,
     },
-    // The "random one input field" you mentioned — rename freely (e.g. category, note, tag)
+   
     category: {
       type: String,
       trim: true,
@@ -26,7 +26,7 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     imageFileId: {
-      type: String, // ImageKit's fileId, so we can delete the asset from the cloud later
+      type: String, 
       required: true,
     },
   },

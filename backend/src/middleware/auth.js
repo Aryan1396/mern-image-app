@@ -1,10 +1,7 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-/**
- * Protects routes: reads JWT from httpOnly cookie (or Authorization header as fallback),
- * verifies it, and attaches the authenticated user to req.user.
- */
+//authnication middleware to protect routes
 const protect = async (req, res, next) => {
   try {
     let token = req.cookies?.token;

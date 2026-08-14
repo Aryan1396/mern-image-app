@@ -1,8 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
-// Files are kept in memory only (req.file.buffer) and streamed straight to
-// ImageKit — nothing is written to local disk anymore.
+// Configure multer for file uploads
 const storage = multer.memoryStorage();
 
 const fileFilter = (req, file, cb) => {

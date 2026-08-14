@@ -8,7 +8,7 @@ export default function Navbar() {
     <header className="sticky top-0 z-10 border-b border-ink/5 bg-cream/80 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
         <h1 className="font-serif text-xl font-semibold tracking-tight text-ink">
-          Your <span className="text-accent">Gallery</span>
+          Our <span className="text-accent">Gallery</span>
         </h1>
         {user && (
           <div className="flex items-center gap-4">
