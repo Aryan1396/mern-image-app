@@ -35,7 +35,7 @@ const createPost = async (req, res) => {
   }
 };
 
-//   Get only the logged-in user's posts (never anyone else's)
+//    the logged-in user's see their posts (never anyone else's)
 //   GET /api/posts
 const getMyPosts = async (req, res) => {
   try {
@@ -66,6 +66,7 @@ const deletePost = async (req, res) => {
       }
     }
 
+    // Delete the post from the database
     await post.deleteOne();
     res.status(200).json({ message: "Post deleted" });
   } catch (error) {

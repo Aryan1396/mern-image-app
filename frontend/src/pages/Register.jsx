@@ -7,14 +7,18 @@ import Alert from "../components/Alert";
 import { useAuth } from "../context/AuthContext";
 
 export default function Register() {
+
+  // Auth context and navigation
   const { register } = useAuth();
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  // Handle form input changes
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -33,6 +37,8 @@ export default function Register() {
     <AuthLayout title="Create your account" subtitle="Start building your private gallery">
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <Alert>{error}</Alert>
+
+        {/* // Name field */}
         <TextInput
           label="Name"
           name="name"
@@ -41,6 +47,8 @@ export default function Register() {
           placeholder="Full Name"
           required
         />
+
+        {/* // Email field */}
         <TextInput
           label="Email"
           type="email"
@@ -50,6 +58,8 @@ export default function Register() {
           placeholder="you@example.com"
           required
         />
+
+        {/* // Password field */}
         <TextInput
           label="Password"
           type="password"
@@ -60,10 +70,14 @@ export default function Register() {
           minLength={6}
           required
         />
+
+        {/* submit button */}
         <Button type="submit" loading={loading} className="mt-2 w-full">
           Create account
         </Button>
       </form>
+
+      {/* Link to login page */}
       <p className="mt-6 text-center text-sm text-ink/50">
         Already have an account?{" "}
         <Link to="/login" className="font-medium text-accent hover:underline">

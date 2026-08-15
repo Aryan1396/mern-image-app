@@ -1,5 +1,7 @@
 export default function TextInput({ label, error, className = "", ...props }) {
   return (
+
+    // label for input fields
     <label className="block">
       {label && (
         <span className="mb-1.5 block text-sm font-medium text-ink/80">{label}</span>

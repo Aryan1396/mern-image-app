@@ -4,6 +4,7 @@ import Button from "./Button";
 import Alert from "./Alert";
 import { createPost } from "../api/postApi";
 
+//states
 export default function PostForm({ onPostCreated }) {
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -13,6 +14,7 @@ export default function PostForm({ onPostCreated }) {
   const [loading, setLoading] = useState(false);
   const fileInputRef = useRef(null);
 
+//form handlers
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
     if (!selected) return;
@@ -68,6 +70,8 @@ export default function PostForm({ onPostCreated }) {
 
       <div className="grid gap-4 sm:grid-cols-[160px_1fr]">
         <div>
+
+          {/* //image upload input fields */}
           <label
             htmlFor="image"
             className="flex aspect-square w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-ink/15 bg-cream text-center text-xs text-ink/40 transition hover:border-accent hover:text-accent"
@@ -78,6 +82,8 @@ export default function PostForm({ onPostCreated }) {
               <span>Click to choose image</span>
             )}
           </label>
+
+          {/* //hidden file input */}
           <input
             id="image"
             ref={fileInputRef}
@@ -89,18 +95,24 @@ export default function PostForm({ onPostCreated }) {
         </div>
 
         <div className="flex flex-col gap-3">
+
+          {/* //title input fields */}
           <TextInput
             label="Title"
             placeholder="A rainy evening in Ahmedabad"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+
+          {/* //category input fields */}
           <TextInput
             label="Category (optional)"
             placeholder="e.g. Travel, Food, Nature"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           />
+
+          {/* //submit button */}
           <Button type="submit" loading={loading} className="mt-auto self-start">
             Add photo
           </Button>
